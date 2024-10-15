@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 1px;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            font-size: 24px;
+        }
+        .cell input {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 24px;
+            border: none;
+            outline: none;
+        }
+        .cell:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-4 text-center">Sudoku Game</h1>
+        <div id="timer" class="text-center mb-4 font-semibold"></div>
+        <div id="sudoku-grid" class="grid mb-4"></div>
+        
+        <div class="flex justify-center mb-4">
+            <button id="easy" class="bg-green-300 text-white px-4 py-2 rounded mr-2">Easy</button>
+            <button id="medium" class="bg-yellow-300 text-white px-4 py-2 rounded mr-2">Medium</button>
+            <button id="hard" class="bg-red-300 text-white px-4 py-2 rounded">Hard</button>
+        </div>
+
+        <div class="flex justify-center mb-4">
+            <button id="new-game" class="bg-blue-500 text-white px-4 py-2 rounded">New Game</button>
+            <button id="pause" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Pause</button>
+            <button id="hint" class="bg-yellow-500 text-white px-4 py-2 rounded ml-2">Hint</button>
+            <button id="autocomplete" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Auto Complete</button>
+        </div>
+    </div>
+
+    <!-- Completion Modal -->
+    <div id="completion-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-4 rounded-lg">
+            <h2 class="text-xl font-bold">Congratulations!</h2>
+            <p id="result-message"></p>
+            <p id="score-message"></p>
+            <button id="play-again" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Play Again</button>
+        </div>
+    </div>
+
+    <script src="sudoku.js"></script>
+</body>
+</html>
